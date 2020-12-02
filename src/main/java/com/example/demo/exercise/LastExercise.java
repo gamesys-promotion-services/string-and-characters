@@ -17,6 +17,11 @@ public class LastExercise {
 
     public static String validateReimbursementAmount(String emailSubject, double amount) {
         String message = "invalid";
+        for (EnumReimbursement reimbursement: EnumReimbursement.values()) {
+            if(emailSubject.contains(reimbursement.toString()) && amount <= reimbursement.getAllowance()) {
+                message = emailSubject.trim().concat(" with the amount of ").concat(String.valueOf(amount)).concat(" is valid") ;
+            }
+        }
         return message;
     }
 }

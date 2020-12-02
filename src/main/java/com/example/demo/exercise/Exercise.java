@@ -35,6 +35,16 @@ public class Exercise {
 
     private static int validateUserInput(String value) {
         int amount = 0;
+        value = value.toUpperCase();
+        if (value.contains("COVID")) {
+            return 2019;
+        }
+        value = value.replaceAll("[^\\d.]", "");
+        if (value.length() > 0) {
+            amount = Integer.parseInt(value);
+        } else if (value.replaceAll("[0-9]", "").length() > 0 ){
+            amount = 0;
+        }
         return amount;
     }
 }
